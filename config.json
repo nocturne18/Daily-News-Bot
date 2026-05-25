@@ -6,10 +6,12 @@
       "name": "科技/AI",
       "emoji": "🤖",
       "color": 5793266,
-      "source": "newsapi",
-      "query": "the",
-      "sources": "techcrunch",
-      "language": "en",
+      "source": "rss_multi",
+      "rss_urls": [
+        "https://techcrunch.com/feed/",
+        "https://www.theverge.com/rss/index.xml",
+        "https://feeds.arstechnica.com/arstechnica/index"
+      ],
       "webhook_env": "WEBHOOK_TECH"
     },
     {
