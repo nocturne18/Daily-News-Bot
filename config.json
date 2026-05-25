@@ -6,6 +6,7 @@
       "name": "科技/AI",
       "emoji": "🤖",
       "color": 5793266,
+      "source": "newsapi",
       "query": "the",
       "sources": "the-verge,techcrunch,ars-technica",
       "language": "en",
