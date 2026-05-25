@@ -1,0 +1,49 @@
+{
+  "schedule_time_utc": "00:00",
+  "news_per_topic": 5,
+  "topics": [
+    {
+      "name": "科技/AI",
+      "emoji": "🤖",
+      "color": 5793266,
+      "source": "newsapi",
+      "query": "artificial intelligence OR AI technology",
+      "language": "en",
+      "webhook_env": "WEBHOOK_TECH"
+    },
+    {
+      "name": "國際財經",
+      "emoji": "💹",
+      "color": 5763719,
+      "source": "newsapi",
+      "query": "global economy OR finance OR stock market",
+      "language": "en",
+      "webhook_env": "WEBHOOK_FINANCE"
+    },
+    {
+      "name": "國際政治",
+      "emoji": "🌏",
+      "color": 15844367,
+      "source": "newsapi",
+      "query": "international politics OR geopolitics OR diplomacy",
+      "language": "en",
+      "webhook_env": "WEBHOOK_POLITICS"
+    },
+    {
+      "name": "台灣時事",
+      "emoji": "🇹🇼",
+      "color": 3066993,
+      "source": "rss",
+      "rss_url": "https://news.pts.org.tw/rss/tab/index",
+      "webhook_env": "WEBHOOK_TAIWAN"
+    },
+    {
+      "name": "台灣財經/產業",
+      "emoji": "💼",
+      "color": 1752220,
+      "source": "rss",
+      "rss_url": "https://www.cw.com.tw/rss/cw/rss.ashx",
+      "webhook_env": "WEBHOOK_TAIWAN"
+    }
+  ]
+}
