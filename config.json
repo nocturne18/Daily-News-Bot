@@ -12,6 +12,15 @@
         "https://www.theverge.com/rss/index.xml",
         "https://feeds.arstechnica.com/arstechnica/index"
       ],
+      "keywords": [
+        "artificial intelligence", "machine learning", "deep learning",
+        "neural network", "large language model", "LLM", "computer vision",
+        "natural language processing", "robotics", "automation",
+        "semiconductor", "GPU", "cloud computing", "cybersecurity",
+        "data center", "quantum computing", "edge computing",
+        "Microsoft", "Google", "Apple", "Amazon", "Meta",
+        "NVIDIA", "AMD", "Intel", "TSMC", "Qualcomm", "OpenAI"
+      ],
       "webhook_env": "WEBHOOK_TECH"
     },
     {
