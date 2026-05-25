@@ -6,10 +6,9 @@
       "name": "科技/AI",
       "emoji": "🤖",
       "color": 5793266,
-      "source": "newsapi",
-      "query": "AI OR artificial intelligence OR semiconductor OR chip OR technology",
+      "query": "the",
+      "sources": "the-verge,techcrunch,ars-technica",
       "language": "en",
-      "sources": "reuters,bbc-news,associated-press,bloomberg,the-verge,techcrunch,ars-technica,al-jazeera-english,the-guardian-uk",
       "webhook_env": "WEBHOOK_TECH"
     },
     {
