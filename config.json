@@ -7,8 +7,9 @@
       "emoji": "🤖",
       "color": 5793266,
       "source": "newsapi",
-      "query": "artificial intelligence OR AI technology",
+      "query": "AI OR artificial intelligence OR semiconductor OR chip OR technology",
       "language": "en",
+      "sources": "reuters,the-verge,techcrunch,ars-technica,bbc-news",
       "webhook_env": "WEBHOOK_TECH"
     },
     {
@@ -16,8 +17,9 @@
       "emoji": "💹",
       "color": 5763719,
       "source": "newsapi",
-      "query": "global economy OR finance OR stock market",
+      "query": "economy OR inflation OR interest rate OR stock market OR GDP OR trade",
       "language": "en",
+      "sources": "reuters,bloomberg,associated-press,the-guardian-uk",
       "webhook_env": "WEBHOOK_FINANCE"
     },
     {
@@ -25,8 +27,9 @@
       "emoji": "🌏",
       "color": 15844367,
       "source": "newsapi",
-      "query": "international politics OR geopolitics OR diplomacy",
+      "query": "election OR war OR sanctions OR diplomacy OR treaty OR summit",
       "language": "en",
+      "sources": "reuters,associated-press,bbc-news,al-jazeera-english,the-guardian-uk",
       "webhook_env": "WEBHOOK_POLITICS"
     },
     {
