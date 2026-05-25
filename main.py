@@ -14,7 +14,7 @@ load_dotenv()
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 NEWS_API_KEY = os.environ.get("NEWS_API_KEY")
 NEWSAPI_BASE = "https://newsapi.org/v2/everything"
-GEMINI_MODEL = "gemini-1.5-flash"
+GEMINI_MODEL = "gemini-2.0-flash"
 TOPIC_SLEEP_SECONDS = 3
 
 
