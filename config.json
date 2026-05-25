@@ -33,6 +33,15 @@
         "https://www.economist.com/finance-and-economics/rss.xml",
         "https://www.cnbc.com/id/10001147/device/rss/rss.html"
       ],
+      "keywords": [
+        "inflation", "interest rate", "Federal Reserve", "central bank",
+        "monetary policy", "recession", "economic growth", "GDP",
+        "unemployment", "consumer spending", "bond yield", "treasury yield",
+        "stock market", "earnings", "revenue", "profit", "IPO",
+        "valuation", "equity", "dividend", "shareholder", "capital market",
+        "investment", "hedge fund", "asset management", "private equity",
+        "venture capital", "banking", "financial services"
+      ],
       "webhook_env": "WEBHOOK_FINANCE"
     },
     {
