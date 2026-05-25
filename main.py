@@ -92,6 +92,35 @@ def fetch_rss(rss_url: str, count: int) -> list[dict]:
         })
     return result
 
+def fetch_rss_multi(rss_urls: list, count: int) -> list[dict]:
+    all_entries = []
+    for url in rss_urls:
+        feed = feedparser.parse(url)
+        print(f"  RSS 來源 {url}：{len(feed.entries)} 則")
+        for entry in feed.entries:
+            title = entry.get("title", "")
+            url_link = entry.get("link", "")
+            summary = entry.get("summary", "") or entry.get("description", "")
+            summary = re.sub(r"<[^>]+>", "", summary)
+            all_entries.append({
+                "title": title,
+                "url": url_link,
+                "text": summary[:300],
+                "published": entry.get("published_parsed"),
+            })
+
+    # 按發布時間排序，取最新的 count 則
+    all_entries.sort(key=lambda x: x.get("published") or (0,), reverse=True)
+
+    # 移除 published 欄位（後續不需要）
+    result = []
+    for e in all_entries[:count]:
+        result.append({
+            "title": e["title"],
+            "url": e["url"],
+            "text": e["text"],
+        })
+    return result
 
 def fetch_news(topic: dict, count: int) -> list[dict]:
     if topic["source"] == "newsapi":
@@ -103,8 +132,9 @@ def fetch_news(topic: dict, count: int) -> list[dict]:
         )
     elif topic["source"] == "rss":
         return fetch_rss(topic["rss_url"], count)
+    elif topic["source"] == "rss_multi":
+        return fetch_rss_multi(topic["rss_urls"], count)
     raise ValueError(f"Unknown source: {topic['source']}")
-
 
 # ── Gemini summarisation ──────────────────────────────────────────────────────
 
