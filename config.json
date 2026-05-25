@@ -34,7 +34,7 @@
       "emoji": "🇹🇼",
       "color": 3066993,
       "source": "rss",
-      "rss_url": "https://news.pts.org.tw/xml/tmp_rss2.xml",
+      "rss_url": "https://feeds.feedburner.com/pts-news",
       "webhook_env": "WEBHOOK_TAIWAN"
     },
     {
