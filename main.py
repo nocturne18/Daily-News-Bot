@@ -241,9 +241,12 @@ def process_topic(topic: dict, count: int) -> None:
     name = topic["name"]
     print(f"\n[{name}] 開始處理...")
 
-    webhook_url = os.environ.get(topic["webhook_env"])
-    if not webhook_url:
-        print(f"  [SKIP] 找不到環境變數 {topic['webhook_env']}，跳過此主題")
+    # 支援單一或多個 webhook
+    webhook_envs = topic.get("webhook_envs") or [topic.get("webhook_env")]
+    webhook_urls = [os.environ.get(env) for env in webhook_envs if os.environ.get(env)]
+
+    if not webhook_urls:
+        print(f"  [SKIP] 找不到任何 Webhook 環境變數，跳過此主題")
         return
 
     # 1. Fetch news
@@ -261,17 +264,20 @@ def process_topic(topic: dict, count: int) -> None:
     # 2. Summarise
     summaries = summarise_with_gemini(name, articles)
     if summaries:
-        print(f"  Gemini 摘要完成（{len(summaries)} 則）")
+        print(f"  Groq 摘要完成（{len(summaries)} 則）")
     else:
-        print("  Gemini 失敗，改用原文前100字")
+        print("  Groq 失敗，改用原文前100字")
 
-    # 3. Build & send embed
+    # 3. Build embed
     payload = build_embed(topic, articles, summaries)
-    try:
-        send_to_discord(webhook_url, payload)
-        print(f"  [OK] 已推送到 Discord")
-    except Exception as exc:
-        print(f"  [ERROR] Discord 推送失敗：{exc}")
+
+    # 4. 推送到所有 Webhook
+    for webhook_url in webhook_urls:
+        try:
+            send_to_discord(webhook_url, payload)
+            print(f"  [OK] 已推送到 Discord")
+        except Exception as exc:
+            print(f"  [ERROR] Discord 推送失敗：{exc}")
 
 
 def main() -> None:
