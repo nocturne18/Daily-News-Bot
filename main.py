@@ -26,18 +26,20 @@ def load_config(path: str = "config.json") -> dict:
 # ── News fetchers ─────────────────────────────────────────────────────────────
 
 def fetch_newsapi(query: str, language: str, count: int) -> list[dict]:
-    today = date.today().isoformat()
+    yesterday = (date.today() - timedelta(days=1)).isoformat()
     params = {
         "q": query,
         "language": language,
-        "from": today,
+        "from": yesterday,
         "sortBy": "publishedAt",
         "pageSize": count,
         "apiKey": NEWS_API_KEY,
     }
     resp = requests.get(NEWSAPI_BASE, params=params, timeout=15)
     resp.raise_for_status()
-    articles = resp.json().get("articles", [])
+    data = resp.json()
+    print(f"  NewsAPI 回應：status={data.get('status')}, totalResults={data.get('totalResults')}")
+    articles = data.get("articles", [])
     result = []
     for a in articles[:count]:
         content = a.get("content") or a.get("description") or ""
