@@ -33,6 +33,7 @@ jobs:
       - name: Run news bot
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
           WEBHOOK_TECH: ${{ secrets.WEBHOOK_TECH }}
           WEBHOOK_FINANCE: ${{ secrets.WEBHOOK_FINANCE }}
