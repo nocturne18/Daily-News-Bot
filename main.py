@@ -28,7 +28,7 @@ def load_config(path: str = "config.json") -> dict:
 
 # ── News fetchers ─────────────────────────────────────────────────────────────
 
-def fetch_newsapi(query: str, language: str, count: int) -> list[dict]:
+def fetch_newsapi(query: str, language: str, count: int, sources: str = "") -> list[dict]:
     yesterday = (date.today() - timedelta(days=1)).isoformat()
     params = {
         "q": query,
@@ -38,6 +38,9 @@ def fetch_newsapi(query: str, language: str, count: int) -> list[dict]:
         "pageSize": count,
         "apiKey": NEWS_API_KEY,
     }
+    if sources:
+        params["sources"] = sources
+        params.pop("language", None)  # NewsAPI 指定 sources 時不能同時帶 language
     resp = requests.get(NEWSAPI_BASE, params=params, timeout=15)
     resp.raise_for_status()
     data = resp.json()
@@ -73,7 +76,12 @@ def fetch_rss(rss_url: str, count: int) -> list[dict]:
 
 def fetch_news(topic: dict, count: int) -> list[dict]:
     if topic["source"] == "newsapi":
-        return fetch_newsapi(topic["query"], topic.get("language", "en"), count)
+        return fetch_newsapi(
+            topic["query"],
+            topic.get("language", "en"),
+            count,
+            topic.get("sources", "")
+        )
     elif topic["source"] == "rss":
         return fetch_rss(topic["rss_url"], count)
     raise ValueError(f"Unknown source: {topic['source']}")
