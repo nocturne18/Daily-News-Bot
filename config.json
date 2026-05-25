@@ -21,7 +21,7 @@
         "Microsoft", "Google", "Apple", "Amazon", "Meta",
         "NVIDIA", "AMD", "Intel", "TSMC", "Qualcomm", "OpenAI"
       ],
-      "webhook_envs": ["WEBHOOK_TECH_Hsuan", "WEBHOOK_TECH_Black"],
+      "webhook_envs": ["WEBHOOK_TECH_HSUAN", "WEBHOOK_TECH_BLACK"],
       "webhook_env": "WEBHOOK_TECH"
     },
     {
@@ -43,7 +43,7 @@
         "investment", "hedge fund", "asset management", "private equity",
         "venture capital", "banking", "financial services"
       ],
-      "webhook_envs": ["WEBHOOK_FINANCE_Hsuan", "WEBHOOK_FINANCE_Black"],
+      "webhook_envs": ["WEBHOOK_FINANCE_HSUAN", "WEBHOOK_FINANCE_BLACK"],
       "webhook_env": "WEBHOOK_FINANCE"
     },
     {
@@ -54,7 +54,7 @@
       "query": "election OR war OR sanctions OR diplomacy OR treaty OR summit",
       "language": "en",
       "sources": "reuters,bbc-news,associated-press,al-jazeera-english,the-guardian-uk",
-      "webhook_envs": ["WEBHOOK_POLITICS_Hsuan", "WEBHOOK_POLITICS_Black"],
+      "webhook_envs": ["WEBHOOK_POLITICS_HSUAN", "WEBHOOK_POLITICS_BLACK"],
       "webhook_env": "WEBHOOK_POLITICS"
     },
     {
@@ -63,7 +63,7 @@
       "color": 3066993,
       "source": "rss",
       "rss_url": "https://news.pts.org.tw/xml/newsfeed.xml",
-      "webhook_envs": ["WEBHOOK_TAIWAN_Hsuan", "WEBHOOK_TAIWAN_Black"],
+      "webhook_envs": ["WEBHOOK_TAIWAN_HSUAN", "WEBHOOK_TAIWAN_BLACK"],
       "webhook_env": "WEBHOOK_TAIWAN"
     },
     {
@@ -72,7 +72,7 @@
       "color": 1752220,
       "source": "rss",
       "rss_url": "https://www.cw.com.tw/RSS/cw_content.xml",
-      "webhook_envs": ["WEBHOOK_TAIWAN_Hsuan", "WEBHOOK_TAIWAN_Black"],
+      "webhook_envs": ["WEBHOOK_TAIWAN_HSUAN", "WEBHOOK_TAIWAN_BLACK"],
       "webhook_env": "WEBHOOK_TAIWAN"
     }
   ]
