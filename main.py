@@ -32,15 +32,34 @@ def fetch_newsapi(query: str, language: str, count: int, sources: str = "") -> l
     yesterday = (date.today() - timedelta(days=1)).isoformat()
     params = {
         "q": query,
-        "language": language,
         "from": yesterday,
-        "sortBy": "publishedAt",
-        "pageSize": count,
+        "sortBy": "popularity",
+        "pageSize": count * 3,
         "apiKey": NEWS_API_KEY,
     }
+
     if sources:
-        params["sources"] = sources
-        params.pop("language", None)  # NewsAPI 指定 sources 時不能同時帶 language
+        domains = {
+            "reuters": "reuters.com",
+            "bbc-news": "bbc.co.uk,bbc.com",
+            "associated-press": "apnews.com",
+            "bloomberg": "bloomberg.com",
+            "the-verge": "theverge.com",
+            "techcrunch": "techcrunch.com",
+            "ars-technica": "arstechnica.com",
+            "al-jazeera-english": "aljazeera.com",
+            "the-guardian-uk": "theguardian.com",
+        }
+        source_list = [s.strip() for s in sources.split(",")]
+        domain_list = []
+        for s in source_list:
+            if s in domains:
+                domain_list.extend(domains[s].split(","))
+        if domain_list:
+            params["domains"] = ",".join(domain_list)
+    else:
+        params["language"] = language
+
     resp = requests.get(NEWSAPI_BASE, params=params, timeout=15)
     resp.raise_for_status()
     data = resp.json()
