@@ -9,7 +9,7 @@
       "source": "newsapi",
       "query": "AI OR artificial intelligence OR semiconductor OR chip OR technology",
       "language": "en",
-      "sources": "reuters,the-verge,techcrunch,ars-technica,bbc-news",
+      "sources": "reuters,bbc-news,associated-press,bloomberg,the-verge,techcrunch,ars-technica,al-jazeera-english,the-guardian-uk",
       "webhook_env": "WEBHOOK_TECH"
     },
     {
@@ -19,7 +19,7 @@
       "source": "newsapi",
       "query": "economy OR inflation OR interest rate OR stock market OR GDP OR trade",
       "language": "en",
-      "sources": "reuters,bloomberg,associated-press,the-guardian-uk",
+      "sources": "reuters,bbc-news,associated-press,bloomberg,the-verge,techcrunch,ars-technica,al-jazeera-english,the-guardian-uk",
       "webhook_env": "WEBHOOK_FINANCE"
     },
     {
@@ -29,7 +29,7 @@
       "source": "newsapi",
       "query": "election OR war OR sanctions OR diplomacy OR treaty OR summit",
       "language": "en",
-      "sources": "reuters,associated-press,bbc-news,al-jazeera-english,the-guardian-uk",
+      "sources": "reuters,bbc-news,associated-press,bloomberg,the-verge,techcrunch,ars-technica,al-jazeera-english,the-guardian-uk",
       "webhook_env": "WEBHOOK_POLITICS"
     },
     {
