@@ -5,16 +5,19 @@ import time
 from datetime import date, timedelta
 
 import feedparser
-import google.generativeai as genai
+#import google.generativeai as genai
+from groq import Groq
 import requests
 from dotenv import load_dotenv
 
 load_dotenv()
 
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+#GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
 NEWS_API_KEY = os.environ.get("NEWS_API_KEY")
 NEWSAPI_BASE = "https://newsapi.org/v2/everything"
-GEMINI_MODEL = "gemini-1.5-flash-8b"
+#GEMINI_MODEL = "gemini-1.5-flash-8b"
+GROQ_MODEL = "llama-3.3-70b-versatile"
 TOPIC_SLEEP_SECONDS = 3
 
 
@@ -104,21 +107,21 @@ def build_prompt(topic_name: str, articles: list[dict]) -> str:
 
 def summarise_with_gemini(topic_name: str, articles: list[dict]) -> list[dict] | None:
     try:
-        genai.configure(api_key=GEMINI_API_KEY)
-        model = genai.GenerativeModel(GEMINI_MODEL)
+        client = Groq(api_key=GROQ_API_KEY)
         prompt = build_prompt(topic_name, articles)
-        response = model.generate_content(prompt)
-        raw = response.text.strip()
-
-        # Extract JSON array even if wrapped in markdown code block
+        response = client.chat.completions.create(
+            model=GROQ_MODEL,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.3,
+        )
+        raw = response.choices[0].message.content.strip()
         match = re.search(r"\[[\s\S]*\]", raw)
         if not match:
-            raise ValueError("No JSON array found in Gemini response")
+            raise ValueError("No JSON array found in Groq response")
         return json.loads(match.group())
     except Exception as exc:
-        print(f"  [Gemini ERROR] {topic_name}: {exc}")
+        print(f"  [Groq ERROR] {topic_name}: {exc}")
         return None
-
 
 # ── Discord Webhook ───────────────────────────────────────────────────────────
 
